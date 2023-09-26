@@ -1,0 +1,23 @@
+section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  cursor: pointer;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border: none;
+  color: white;
+  background: rgb(40, 40, 40);
+
+  /* Animation */
+  transition: background 0.75s ease-in-out;
+}
+
+button:hover {
+  background: rgb(74, 74, 74);
+}
