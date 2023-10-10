@@ -16,7 +16,7 @@ Master the skills of thoughtful and strategic animation and boost my Front End s
 
 1. Pop Up Cookie
 2. Text Motion and Movement
-3. Interactive Form Animation
-4. SVG Micro Animations
+3. SVG Micro Animations
+4. Interactive Form Animation
 5. Clothing Shop with Page Transitions
 6. Ultimate Animated iPhone Website
