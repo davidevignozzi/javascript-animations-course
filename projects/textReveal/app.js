@@ -20,7 +20,7 @@ tl.fromTo(
 );
 
 /**
- * Text animation
+ * Hero Text animation
  */
 // 1st word
 tl.fromTo(
@@ -73,4 +73,23 @@ tl.fromTo(
   { y: 20, autoAlpha: 0 },
   { y: 0, autoAlpha: 1 },
   '<'
+);
+
+/**
+ * Split text alternative
+ */
+const logo = document.querySelector('.logo');
+const letters = logo.textContent.split(''); // Each letter will be an item of an arry
+
+logo.textContent = ''; // To delete the original logo. Will be replaced letter by letter
+
+letters.forEach((letter) => {
+  logo.innerHTML += `<span class="letter">${letter}</span>`; // Add each letter in a span in the logo
+});
+
+gsap.set('.letter', { display: 'inline-block' });
+gsap.fromTo(
+  '.letter',
+  { y: '100%' },
+  { y: 0, ease: 'back.out(3)', delay: 2, stagger: 0.075 }
 );
