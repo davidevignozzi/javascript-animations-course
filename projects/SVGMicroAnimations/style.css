@@ -23,7 +23,14 @@ body {
 .home,
 .notifications,
 .messages {
+  cursor: pointer;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.notifications {
+  margin: 2rem 0;
 }
 
 .home-title,
