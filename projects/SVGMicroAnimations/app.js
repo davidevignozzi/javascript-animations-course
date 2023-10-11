@@ -55,3 +55,20 @@ notifications.addEventListener('click', () => {
     { scale: 1.3, autoAlpha: 0, duration: 1 }
   );
 });
+
+/**
+ * Messages Animation
+ */
+gsap.set('.flap', { transformOrigin: 'top' });
+messages.addEventListener('click', () => {
+  tl.fromTo('.messages-svg', { scale: 1 }, { scale: 0.9 });
+  tl.fromTo('.flap', { scale: 1 }, { scale: -1 }, '<50%');
+  tl.fromTo('.messages-svg', { scale: 0.9 }, { scale: 1 }, '<50%');
+  tl.fromTo(
+    '.note',
+    { y: 0, autoAlpha: 1 },
+    { y: -40, autoAlpha: 0, duration: 0.75 },
+    '<50%'
+  );
+  tl.to('.flap', { scale: 1 }, '<50%');
+});
