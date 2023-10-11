@@ -9,6 +9,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: linear-gradient(90deg, #6190e8, #a7bfe8);
 }
