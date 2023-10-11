@@ -38,3 +38,8 @@ body {
 .messages-title {
   padding-left: 2rem;
 }
+
+.notification-svg,
+.message-svg {
+  overflow: visible;
+}
