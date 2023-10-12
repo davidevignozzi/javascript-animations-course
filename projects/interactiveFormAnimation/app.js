@@ -6,6 +6,22 @@ import gsap from 'gsap';
 const containers = document.querySelectorAll('.input-container');
 const form = document.querySelector('form');
 
+/**
+ * Validate email
+ */
+function validateEmail(email) {
+  let re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+function validatePhone(phone) {
+  let re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+  return re.test(phone);
+}
+
+/**
+ * Animations
+ *
+ */
 const tl = gsap.timeline({ defaults: { duration: 1 } });
 
 /**
@@ -80,5 +96,52 @@ form.addEventListener('click', () => {
         });
       }
     }
+
+    // Validate
+    input.addEventListener('input', (e) => {
+      // Name Validation
+      if (e.target.type === 'text') {
+        let inputText = e.target.value;
+        if (inputText.length > 2) {
+          // Valid => Color blue
+          colorize('#6391e8', line, placeholder);
+        } else {
+          // Not Valid => Color red
+          colorize('#fe8c99', line, placeholder);
+        }
+      }
+
+      // Email Validation
+      if (e.target.type === 'email') {
+        let valid = validateEmail(e.target.value);
+        if (valid) {
+          // Valid => Color blue
+          colorize('#6391e8', line, placeholder);
+        } else {
+          // Not Valid => Color red
+          colorize('#fe8c99', line, placeholder);
+        }
+      }
+
+      // Phone Validation
+      if (e.target.type === 'tel') {
+        let valid = validatePhone(e.target.value);
+        if (valid) {
+          // Valid => Color blue
+          colorize('#6391e8', line, placeholder);
+        } else {
+          // Not Valid => Color red
+          colorize('#fe8c99', line, placeholder);
+        }
+      }
+    });
   });
 });
+
+/**
+ * Colorize Function
+ */
+function colorize(color, line, placeholder) {
+  gsap.to(line, { stroke: color, duration: 0.75 });
+  gsap.to(placeholder, { color: color, duration: 0.75 });
+}
