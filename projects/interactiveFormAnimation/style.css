@@ -154,21 +154,6 @@ button {
     flex-direction: column;
     padding: 8rem 3rem;
   }
-  .line-svg {
-    width: 100%;
-  }
-  #character {
-    transform: scale(0.4) translate(0%, 30%);
-  }
-}
-
-@media screen and (max-width: 812px) {
-  form {
-    width: 90vw;
-    min-height: 80vh;
-    flex-direction: column;
-    padding: 8rem 3rem;
-  }
   .contact-right,
   .contact-left {
     margin: 0;
