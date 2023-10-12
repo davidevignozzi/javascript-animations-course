@@ -14,12 +14,11 @@ body {
 }
 
 form {
-  width: 40vw;
   min-height: 40vh;
   background: white;
   color: #777474;
   border-radius: 2rem;
-  /* padding: 3rem 5rem; */
+  padding: 3rem 5rem;
   display: flex;
   position: relative;
 }
@@ -31,7 +30,6 @@ form {
 .contact-left {
   flex: 1;
   margin: 3rem 2.5rem;
-  overflow: hidden;
 }
 .contact-right {
   display: flex;
@@ -147,6 +145,21 @@ button {
   text-align: center;
   transform: translate(-50%, -50%);
   opacity: 0;
+}
+
+@media screen and (max-width: 812px) {
+  form {
+    width: 90vw;
+    min-height: 80vh;
+    flex-direction: column;
+    padding: 8rem 3rem;
+  }
+  .line-svg {
+    width: 100%;
+  }
+  #character {
+    transform: scale(0.4) translate(0%, 30%);
+  }
 }
 
 @media screen and (max-width: 812px) {
