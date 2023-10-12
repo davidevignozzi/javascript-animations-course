@@ -53,7 +53,7 @@ const leaveAnimation = (current, done) => {
 /**
  * Enter Animations
  */
-const enterAnimation = (current, done) => {
+const enterAnimation = (current, done, gradient) => {
   // get the product of the specific page
   const product = current.querySelector('.image-container');
   const text = current.querySelector('.showcase-text');
@@ -85,9 +85,26 @@ const enterAnimation = (current, done) => {
         duration: 1
       },
       '<'
-    )
+    ),
+    // Change gradient
+    tlEnter.to('body', { background: gradient }, '<')
   );
 };
+
+/**
+ * Changing gradient on showcase
+ *
+ */
+function getGradient(name) {
+  switch (name) {
+    case 'handbag':
+      return 'linear-gradient(260deg, #b75d62, #754d4f';
+    case 'boot':
+      return 'linear-gradient(260deg, #5d8cb7, #4c4f70';
+    case 'hat':
+      return 'linear-gradient(260deg, #b27a5c, #7f5450';
+  }
+}
 
 /**
  * Run animations
@@ -98,6 +115,13 @@ barba.init({
     // Showcase transitions
     {
       name: 'default',
+      once(data) {
+        const done = this.async();
+        let next = data.next.container;
+        let gradient = getGradient(data.next.namespace);
+        gsap.set('body', { background: gradient });
+        enterAnimation(next, done, gradient);
+      },
       leave(data) {
         // console.log('🚀 ~ data:', data);
         const done = this.async();
@@ -125,7 +149,8 @@ barba.init({
             );
         */
 
-        enterAnimation(next, done);
+        let gradient = getGradient(data.next.namespace);
+        enterAnimation(next, done, gradient);
       }
     }
   ]
