@@ -182,3 +182,25 @@ function colorize(color, line, placeholder) {
   gsap.to(line, { stroke: color, duration: 0.75 });
   gsap.to(placeholder, { color: color, duration: 0.75 });
 }
+
+/**
+ * Character Animation
+ *
+ */
+gsap.set('#eye', { transformOrigin: 'center' });
+gsap.fromTo(
+  '#eye',
+  { scaleY: 1 },
+  {
+    scaleY: 0.3,
+    repeat: -1,
+    yoyo: true,
+    repeatDelay: 0.5,
+    ease: 'power2.out'
+  }
+);
+gsap.fromTo(
+  '.eyebrow',
+  { y: 0 },
+  { y: -1, repeat: -1, yoyo: true, repeatDelay: 0.5, ease: 'power2.out' }
+);
