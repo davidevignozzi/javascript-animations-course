@@ -5,6 +5,7 @@ import gsap from 'gsap';
  */
 const containers = document.querySelectorAll('.input-container');
 const form = document.querySelector('form');
+const checkbox = document.querySelector('.checkbox');
 
 /**
  * Validate email
@@ -136,6 +137,42 @@ form.addEventListener('click', () => {
       }
     });
   });
+});
+
+/**
+ * Checkbox fill animation
+ */
+const tl2 = gsap.timeline({
+  defaults: { duration: 0.5, ease: 'power2.out' }
+});
+
+const tickMarkPath = document.querySelector('.tick-mark path');
+const pathLength = tickMarkPath.getTotalLength();
+
+gsap.set(tickMarkPath, {
+  strokeDashoffset: pathLength,
+  strokeDasharray: pathLength
+});
+
+checkbox.addEventListener('click', () => {
+  if (checkbox.checked) {
+    tl2.to('.checkbox-fill', { top: 0 });
+    tl2.fromTo(
+      tickMarkPath,
+      { strokeDashoffset: pathLength },
+      { strokeDashoffset: 0 },
+      '<50%'
+    );
+    tl2.to('.checkbox-label', { color: '#6391e8' }, '<');
+  } else {
+    tl2.to('.checkbox-fill', { top: '100%' });
+    tl2.fromTo(
+      tickMarkPath,
+      { strokeDashoffset: 0 },
+      { strokeDashoffset: pathLength }
+    );
+    tl2.to('.checkbox-label', { color: '#c5c5c5' }, '<');
+  }
 });
 
 /**
