@@ -145,7 +145,7 @@ a {
 }
 .retina-line {
   position: absolute;
-  bottom: 15%;
+  bottom: 12.5%;
   left: 50%;
   transform: translate(-50%, -15%);
   font-size: 0.8rem;
@@ -249,7 +249,7 @@ a {
   position: relative;
 }
 .portrait {
-  height: 70vh;
+  height: 80vh;
 }
 .photo-title {
   font-size: 2rem;
@@ -259,7 +259,7 @@ a {
 }
 .phone-video {
   position: absolute;
-  bottom: 10rem;
+  bottom: 0;
   left: 40%;
   transform: translate(-40%, 0);
   z-index: 2;
@@ -279,4 +279,13 @@ a {
   bottom: 1rem;
   transform: scale(0.8);
   border-radius: 2rem;
+}
+
+@media screen and (min-width: 1920px) {
+  .portrait {
+    height: 70vh;
+  }
+  .phone-video {
+    bottom: 10rem;
+  }
 }

@@ -72,13 +72,13 @@ tlSplit.fromTo('.small-phone', { x: '-40%' }, { x: '-20%' }, '<');
 tlSplit.fromTo(
   '.product-text-left',
   { x: 50, autoAlpha: 0 },
-  { x: 0, autoAlpha: 1 },
+  { x: -100, autoAlpha: 1 },
   '<'
 );
 tlSplit.fromTo(
   '.product-text-right',
   { x: -50, autoAlpha: 0 },
-  { x: 0, autoAlpha: 1 },
+  { x: 100, autoAlpha: 1 },
   '<'
 );
 
