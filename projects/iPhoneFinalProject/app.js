@@ -57,6 +57,7 @@ tlHRemove.to('.higlight', {
 
 /**
  * Phone Split
+ *
  */
 const tlSplit = gsap.timeline({
   scrollTrigger: {
@@ -89,4 +90,39 @@ const tlSplitPin = gsap.timeline({
     start: '0%',
     end: '100%'
   }
+});
+
+/**
+ * Carousel
+ *
+ */
+const swatches = document.querySelectorAll('.swatches img');
+const gallery = document.querySelector('.phone-gallery');
+const slides = document.querySelectorAll('.phone-gallery-container');
+
+let currentSwatch = 'blue';
+let topIndex = 2;
+
+swatches.forEach((swatch, idx) => {
+  const coord = slides[idx].getBoundingClientRect().left;
+
+  swatch.addEventListener('click', (e) => {
+    let swatchName = e.target.getAttribute('swatch');
+    let closeUp = document.querySelector(`.${swatchName}`);
+
+    // Check if we are on the same swatch
+    if (currentSwatch === swatchName) {
+      return;
+    }
+
+    // CloseUp
+    gsap.set(closeUp, { zIndex: topIndex });
+    gsap.fromTo(closeUp, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 });
+
+    // Gallery
+    gsap.to(gallery, { x: -coord, duration: 1, ease: 'power2.out' });
+
+    topIndex++;
+    currentSwatch = swatchName;
+  });
 });
