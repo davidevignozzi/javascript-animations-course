@@ -92,6 +92,25 @@ const enterAnimation = (current, done, gradient) => {
 };
 
 /**
+ * Product Enter Animation
+ */
+function productEnterAnimation(next, done) {
+  tlEnter.fromTo(next, { y: '100%' }, { y: 0 });
+  tlEnter.fromTo(
+    '.card',
+    { opacity: 0, y: 50 },
+    { opacity: 1, y: 0, stagger: 0.1, onComplete: done }
+  );
+}
+
+/**
+ * Product Leave Animation
+ */
+function productLeaveAnimation(current, done) {
+  tlLeave.fromTo(current, { y: 0 }, { y: '100%', onComplete: done });
+}
+
+/**
  * Changing gradient on showcase
  *
  */
@@ -151,6 +170,25 @@ barba.init({
 
         let gradient = getGradient(data.next.namespace);
         enterAnimation(next, done, gradient);
+      }
+    },
+    /**
+     * Product page animation
+     */
+    {
+      name: 'product-transition',
+      sync: true,
+      from: { namespace: ['handbag', 'product'] },
+      to: { namespace: ['product', 'handbag'] },
+      enter(data) {
+        const done = this.async();
+        let next = data.next.container;
+        productEnterAnimation(next, done);
+      },
+      leave(data) {
+        const done = this.async();
+        let current = data.current.container;
+        productLeaveAnimation(current, done);
       }
     }
   ]
