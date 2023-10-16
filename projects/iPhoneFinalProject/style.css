@@ -235,3 +235,44 @@ a {
 .right-info span {
   font-size: 1.5rem;
 }
+
+/* Final page */
+.sixth-page {
+  min-height: 100vh;
+  padding: 10% 20%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.portrait {
+  height: 70vh;
+}
+.photo-title {
+  font-size: 2rem;
+}
+.photo-subtitle {
+  font-size: 4rem;
+}
+.phone-video {
+  position: absolute;
+  bottom: 10rem;
+  left: 40%;
+  transform: translate(-40%, 0);
+  z-index: 2;
+}
+.phone-video img,
+.phone-video video {
+  position: absolute;
+}
+.phone-video img {
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  transform: scale(0.8);
+}
+.phone-video video {
+  left: 1rem;
+  bottom: 1rem;
+  transform: scale(0.8);
+  border-radius: 2rem;
+}
