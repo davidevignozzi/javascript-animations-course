@@ -5,6 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Higlight
+ *
  */
 // Page transition
 const tlHPageTransition = gsap.timeline({
@@ -24,8 +25,8 @@ const tlHiglight = gsap.timeline({
     trigger: '.second-page',
     scrub: true,
     start: '-40%',
-    end: '70%',
-    markers: true
+    end: '70%'
+    // markers: true
   }
 });
 tlHiglight.fromTo(
@@ -45,11 +46,47 @@ const tlHRemove = gsap.timeline({
     trigger: '.second-page',
     scrub: true,
     start: '0%',
-    end: '80%',
-    markers: { startColor: 'blue', endColor: 'white' }
+    end: '80%'
+    // markers: { startColor: 'blue', endColor: 'white' }
   }
 });
 tlHRemove.to('.higlight', {
   color: 'rgba(255, 255, 255, 0.6)',
   stagger: 1
+});
+
+/**
+ * Phone Split
+ */
+const tlSplit = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.third-page',
+    start: '-25%',
+    end: '30%',
+    scrub: true
+  }
+});
+tlSplit.fromTo('.large-phone', { x: '40%' }, { x: '20%' });
+tlSplit.fromTo('.small-phone', { x: '-40%' }, { x: '-20%' }, '<');
+tlSplit.fromTo(
+  '.product-text-left',
+  { x: 50, autoAlpha: 0 },
+  { x: 0, autoAlpha: 1 },
+  '<'
+);
+tlSplit.fromTo(
+  '.product-text-right',
+  { x: -50, autoAlpha: 0 },
+  { x: 0, autoAlpha: 1 },
+  '<'
+);
+
+const tlSplitPin = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.third-page',
+    pin: true,
+    pinSpacing: false,
+    start: '0%',
+    end: '100%'
+  }
 });
